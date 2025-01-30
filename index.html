@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fc{
+            border: inset;
+            width: 400px;
+            height: 525px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 70px;
+            background-color: rgb(219, 190, 154);
+        }
+        label{
+            margin-left: -230px;
+            color: rgb(211, 132, 28);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input{
+            text-align: center;
+            width: 300px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        h1{
+            position: absolute;
+            margin-left: 70px;
+            color: black;
+        }
+        p{
+            margin-top: -15px;
+            text-transform: capitalize;
+            font-weight: 800;
+            color: rgb(219, 190, 154);
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <div id="fc">
+    <form action="welcome.html" onsubmit=" return validateForm()">
+        <label for="name">Name*</label><br>
+        <input type="text" name="name" id="name"><br><br>
+        <p class="error" id="nerror">Error</p>
+        <label for="email">Email*</label><br>
+        <input type="email" name="email" id="email"><br><br>
+        <p class="error" id="eerror">Error</p>
+        <label for="password">Password*</label><br>
+        <input type="password" name="password" id="password"><br><br>
+        <p class="error" id="perror">Error</p>
+        <label for="phone">Phone*</label><br>
+        <input type="text" name="phone" id="phone"><br><br>
+        <p class="error" id="pherror">Error</p>
+        <label for="age">Age*</label><br>
+        <input type="text" name="age" id="age"><br><br>
+        <p class="error" id="agerror">Error</p>
+        <button>Submit</button>
+    </form>
+</div>
+    <script>
+        
+
+        let nb=document.getElementById('name')
+        let eb=document.getElementById('email')
+        let pb=document.getElementById('password')
+        let ph=document.getElementById('phone')
+        let ab=document.getElementById('age')
+        let ne=document.getElementById('nerror')
+        let ee=document.getElementById('eerror')
+        let pe=document.getElementById('perror')
+        let phe=document.getElementById('pherror')
+        let ae=document.getElementById('agerror')
+
+        nb.addEventListener('input',()=>{
+            if(nb.value=="")
+        {
+            ne.innerHTML="Name can't be blank"
+            ne.style.color='black'
+        }
+        else if(!(isNaN(nb.value)))
+        {
+            ne.innerHTML="Name should be char"
+            ne.style.color='balck'
+        }
+        
+         else if(nb.value.length<6)
+        {
+            ne.innerHTML="Name should be at least of 6 char"
+            ne.style.color='balck'
+        }
+         else{
+            ne.style.color=" rgb(211, 132, 28)"
+        }
+        })
+
+
+        eb.addEventListener('input',()=>{
+            if(eb.value=="")
+        {
+            ee.innerHTML="Email can't be blank"
+            ee.style.color='black'
+        }
+        else if(!(isNaN(eb.value)))
+        {
+            ee.innerHTML="Email should be char"
+            ee.style.color='balck'
+        }
+        
+         else if(eb.value.length<10)
+        {
+            ee.innerHTML="Email should be at least of 10 char"
+            ee.style.color='balck'
+        }
+         else{
+            ee.style.color=" rgb(211, 132, 28)"
+        }
+        })
+
+        
+
+
+        pb.addEventListener('input', () => {
+        if (pb.value == "") {
+            pe.innerHTML = "Password can't be blank"
+            pe.style.color = 'black'
+    } 
+        else if (pb.value.length < 8) {
+            pe.innerHTML = "Password should be at least 8 characters long"
+            pe.style.color = 'black'
+    }
+        else if (!/[a-z]/.test(pb.value)) {
+            pe.innerHTML = "Password should contain at least one lowercase letter"
+            pe.style.color = 'black'
+    }
+        else if (!/[A-Z]/.test(pb.value)) {
+            pe.innerHTML = "Password should contain at least one uppercase letter"
+            pe.style.color = 'black'
+    } 
+        else if (!/[0-9]/.test(pb.value)) {
+            pe.innerHTML = "Password should contain at least one number"
+            pe.style.color = 'black'
+    }
+        else if (!/[!@#$%^&*()_+\-=\]{};':"\\|,.<>?]/.test(pb.value)) {
+            pe.innerHTML = "Password should contain at least one special character"
+            pe.style.color = 'black'
+    }
+    else{
+            pe.style.color=" rgb(211, 132, 28)"
+        }
+})
+
+
+
+    ph.addEventListener('input',()=>{
+        if(ph.value=="")
+    {
+        phe.innerHTML="phone no can't be blank"
+         phe.style.color = 'black'
+    }
+        else if(isNaN(ph.value)){
+            phe.innerHTML="phone no should be a digit"
+            phe.style.color = 'black'
+    }
+        else if(ph.value.charCodeAt()==32){
+            phe.innerHTML="phone no should not be white space!"
+            phe.style.color='black'
+        }
+        else{
+            phe.style.color=" rgb(211, 132, 28)"
+        }
+    })
+
+
+
+
+        ab.addEventListener('input',()=>{
+            if(ab.value==""){
+                ae.innerHTML="age can't be blank"
+                ae.style.color='black'
+            }
+        else if(isNaN(age.value)){
+            ae.innerHTML="age should be a digit"
+             ae.style.color='black'
+        }
+        else if(age.value<18){
+            ae.innerHTML="age should be greater than 18"
+             ae.style.color='black'
+        }
+        else{
+            ae.style.color="rgb(211,132,28)"
+        }
+ })
+
+
+
+
+          
+        function validateForm()
+        {
+            if(nb.value=="" || eb.value=="" || pb.value=="" || ph.value=="" || ab.value=="")
+               {
+                alert("all fields must be filled before submitting!")
+                return false
+               }
+
+        } 
+
+    </script>
+</body>
+</html>
